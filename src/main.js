@@ -9,9 +9,11 @@ function App(){
         <div id="mainContainer">
             <div id="mainGrid">
                 <Sidebar></Sidebar>
-                <Header></Header>
+                <Header></Header>   
+                <Content></Content>
             </div>
-            {/* <Content></Content>   */}
+              
+            
         </div>
         </>
     )
