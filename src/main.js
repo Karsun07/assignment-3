@@ -6,9 +6,11 @@ import Content from "./components/Content";
 function App(){
     return(
         <>
-        <div className="container">
-            {/* <Sidebar></Sidebar> */}
-            <Header></Header>
+        <div id="mainContainer">
+            <div id="mainGrid">
+                <Sidebar></Sidebar>
+                <Header></Header>
+            </div>
             {/* <Content></Content>   */}
         </div>
         </>
