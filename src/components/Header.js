@@ -1,36 +1,43 @@
-export default function Header({ setWeight, setSize, setFStyle, setAlign }) {
+export default function Header() {
+
+    const applyStyle = (command, value = null) => {
+        document.execCommand(command, false, value);
+    };
+
     return (
         <div id="headerContainer">
-            <h1>Text Editor</h1>
+            <h1 id="textEditor">Text Editor</h1>
 
             <div id="customs">
 
                 {/* Bold */}
-                <button onClick={() => setWeight("bold")}>B</button>
+                <button onClick={() => applyStyle("bold")}>B</button>
 
                 {/* Italic */}
-                <button onClick={() => setFStyle("italic")}>I</button>
+                <button onClick={() => applyStyle("italic")}>I</button>
 
-                {/* Heading (acts like H1, H2, etc.) */}
-                <select onChange={(e) => setSize(Number(e.target.value))}>
-                    <option value={16}>Normal</option>
-                    <option value={32}>H1</option>
-                    <option value={24}>H2</option>
-                    <option value={18}>H3</option>
-                </select>
-
-                {/* Font Size */}
-                <select onChange={(e) => setSize(Number(e.target.value))}>
-                    <option value={12}>12</option>
-                    <option value={16}>16</option>
-                    <option value={24}>24</option>
-                    <option value={32}>32</option>
+                {/* Heading / Font Size */}
+                <select onChange={(e) => applyStyle("fontSize", e.target.value)}>
+                    <option value="3">Normal</option>
+                    <option value="5">H1</option>
+                    <option value="4">H2</option>
+                    <option value="3">H3</option>
                 </select>
 
                 {/* Alignment */}
-                <button onClick={() => setAlign("left")}>Left</button>
-                <button onClick={() => setAlign("center")}>Center</button>
-                <button onClick={() => setAlign("right")}>Right</button>
+                <button onClick={() => applyStyle("justifyLeft")}>Left</button>
+                <button onClick={() => applyStyle("justifyCenter")}>Center</button>
+                <button onClick={() => applyStyle("justifyRight")}>Right</button>
+
+                {/* Bullet List */}
+                <button onClick={() => applyStyle("insertUnorderedList")}>
+                    • List
+                </button>
+
+                {/* Numbered List */}
+                <button onClick={() => applyStyle("insertOrderedList")}>
+                    1. List
+                </button>
 
             </div>
         </div>

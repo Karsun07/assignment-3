@@ -16,7 +16,7 @@ color: #e5e5e5;
 #mainGrid {
 display: grid;
 grid-template-columns: 260px 1fr;
-grid-template-rows: 120px 1fr;  /* 🔥 bigger header */
+grid-template-rows: 120px 1fr;
 height: 100vh;
 }
 
@@ -73,13 +73,13 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 
-padding: 20px; /* 🔥 more space */
-box-shadow: 0 2px 10px rgba(0,0,0,0.4); /* 🔥 depth */
+padding: 20px;
+box-shadow: 0 2px 10px rgba(0,0,0,0.4);
 }
 
 /* Header Title */
 #textEditor {
-font-size: 32px;   /* 🔥 bigger title */
+font-size: 32px;
 font-weight: 600;
 margin-bottom: 12px;
 color: #ffffff;
@@ -168,6 +168,35 @@ border: 1px solid #4a90e2;
 .editorArea:empty::before {
 content: "Start writing your content...";
 color: #777;
+}
+
+/* ================= FIX FOR EDITOR CONTENT ================= */
+
+/* Bold */
+.editorArea b {
+font-weight: bold;
+}
+
+/* Italic */
+.editorArea i {
+font-style: italic;
+}
+
+/* Unordered List */
+.editorArea ul {
+padding-left: 20px;
+list-style-type: disc;
+}
+
+/* Ordered List */
+.editorArea ol {
+padding-left: 20px;
+list-style-type: decimal;
+}
+
+/* List Items */
+.editorArea li {
+margin: 5px 0;
 }
 
 /* ================= SCROLLBAR ================= */
