@@ -1,13 +1,7 @@
-import { useState } from "react";
-
-export default function Content() {
-    const [text, setText] = useState("");
-
+export default function Content({ text, setText, weight, size, fStyle, align }) {
     return (
-        <div id="contentContainer" >
+        <div id="contentContainer" style={{ padding: "20px" }}>
             
-            <h2>Write something:</h2>
-
             <textarea
                 value={text}
                 onChange={(e) => setText(e.target.value)}
@@ -16,11 +10,12 @@ export default function Content() {
                 style={{
                     width: "100%",
                     padding: "10px",
-                    fontSize: "16px"
+                    fontSize: `${size}px`,
+                    fontStyle: fStyle,
+                    fontWeight: weight,
+                    textAlign: align
                 }}
             />
-
-           
 
         </div>
     );
