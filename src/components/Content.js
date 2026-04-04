@@ -1,22 +1,33 @@
-export default function Content({ text, setText, weight, size, fStyle, align }) {
-    return (
-        <div id="contentContainer" style={{ padding: "20px" }}>
-            
-            <textarea
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                placeholder="Type your text here..."
-                rows={6}
-                style={{
-                    width: "100%",
-                    padding: "10px",
-                    fontSize: `${size}px`,
-                    fontStyle: fStyle,
-                    fontWeight: weight,
-                    textAlign: align
-                }}
-            />
+import { useRef, useEffect } from "react";
 
-        </div>
-    );
+export default function Content({ size, onRef }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (onRef) onRef(ref);
+  }, []);
+
+  return (
+    <div id="contentContainer" style={{ padding: "20px" }}>
+      <div
+        id="editor"
+        ref={ref}
+        contentEditable="true"
+        suppressContentEditableWarning={true}
+        className="editorArea"
+        style={{
+          fontSize: `${size}px`,
+          cursor: "text",
+          userSelect: "text",
+          WebkitUserSelect: "text",
+          outline: "none",
+          whiteSpace: "pre-wrap",
+          wordBreak: "break-word",
+        }}
+        data-placeholder="Start writing your content..."
+        onMouseDown={(e) => e.stopPropagation()}
+        onClick={() => ref.current?.focus()}
+      />
+    </div>
+  );
 }

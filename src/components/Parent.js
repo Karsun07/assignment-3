@@ -1,31 +1,30 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Header from "./Header";
 import Content from "./Content";
 
 export default function Parent() {
-    const [text, setText] = useState("");
-    const [weight, setWeight] = useState("normal");
-    const [size, setSize] = useState(16);
-    const [fStyle, setFStyle] = useState("normal");
-    const [align, setAlign] = useState("left");
+  const [size, setSize] = useState(16);
+  const editorRef = useRef(null);
 
-    return (
-        <>
-            <Header
-                setWeight={setWeight}
-                setSize={setSize}
-                setFStyle={setFStyle}
-                setAlign={setAlign}
-            />
+  const handleRef = (ref) => {
+    editorRef.current = ref.current;
+  };
 
-            <Content
-                text={text}
-                setText={setText}
-                weight={weight}
-                size={size}
-                fStyle={fStyle}
-                align={align}
-            />
-        </>
-    );
+  const execCmd = (command, value = null) => {
+    editorRef.current?.focus();
+    document.execCommand(command, false, value);
+  };
+
+  return (
+    <>
+      <Header
+        setSize={setSize}
+        execCmd={execCmd}
+      />
+      <Content
+        size={size}
+        onRef={handleRef}
+      />
+    </>
+  );
 }

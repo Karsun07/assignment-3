@@ -183,3 +183,29 @@ border-radius: 10px;
 ::-webkit-scrollbar-thumb:hover {
 background: #555;
 }
+/* Placeholder for contentEditable */
+.editorArea:empty::before {
+  content: attr(data-placeholder);
+  color: #777;
+  pointer-events: none;
+}
+
+/* Fix list styling inside editor */
+#editor ul, #editor ol {
+  padding-left: 28px;
+  margin: 6px 0;
+}
+
+#editor li {
+  margin: 4px 0;
+}
+.editorArea[data-placeholder]:empty::before {
+  content: attr(data-placeholder);
+  color: #777;
+  pointer-events: none;
+  position: absolute;
+}
+
+.editorArea {
+  position: relative; /* needed for placeholder positioning */
+}
