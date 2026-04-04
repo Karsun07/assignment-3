@@ -1,11 +1,14 @@
-export default function Sidebar(){
-    return (<>
-       <div id="sidebarContainer">
-        <h1>Pallets</h1>
-        <button>Blog</button>
-        <button>Diary</button>
-        <button>Application</button>
-       </div>
-    </>)
+import templates from "./templates";
 
+export default function Sidebar({ loadTemplate }) {
+  return (
+    <div id="sidebarContainer">
+      <h1>Pallets</h1>
+      {Object.keys(templates).map((name) => (
+        <button key={name} onClick={() => loadTemplate(templates[name])}>
+          {name}
+        </button>
+      ))}
+    </div>
+  );
 }
