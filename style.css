@@ -1,233 +1,159 @@
 /* ================= RESET ================= */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Segoe UI", sans-serif;
-  }
+}
 
 body {
-background-color: #121212;
-color: #e5e5e5;
+  background-color: #121212;
+  color: #e5e5e5;
 }
 
 /* ================= GRID LAYOUT ================= */
 #mainGrid {
-display: grid;
-grid-template-columns: 260px 1fr;
-grid-template-rows: 120px 1fr;
-height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: 120px 1fr;
+  height: 100vh;
 }
 
 /* ================= SIDEBAR ================= */
 #sidebarContainer {
-grid-row: 1 / 3;
-background: #1e1e1e;
-border-right: 1px solid #2a2a2a;
-
-display: flex;
-flex-direction: column;
-align-items: center;
-padding-top: 30px;
+  grid-row: 1 / 3;
+  background: #1e1e1e;
+  border-right: 1px solid #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
 }
 
-/* Sidebar Title */
 #sidebarContainer h1 {
-font-size: 22px;
-margin-bottom: 40px;
-color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 40px;
+  color: #ffffff;
 }
 
-/* Sidebar Buttons */
 #sidebarContainer button {
-width: 85%;
-padding: 12px;
-margin: 8px 0;
-
-border: none;
-border-radius: 10px;
-background: #2a2a2a;
-color: #ddd;
-
-font-size: 14px;
-cursor: pointer;
-transition: all 0.2s ease;
+  width: 85%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  background: #2a2a2a;
+  color: #ddd;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 #sidebarContainer button:hover {
-background: #3a3a3a;
-transform: translateX(4px);
+  background: #3a3a3a;
+  transform: translateX(4px);
 }
 
 /* ================= HEADER ================= */
 #headerContainer {
-grid-column: 2;
-grid-row: 1;
-
-background: #1a1a1a;
-border-bottom: 1px solid #2a2a2a;
-
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-
-padding: 20px;
-box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  grid-column: 2;
+  grid-row: 1;
+  background: #1a1a1a;
+  border-bottom: 1px solid #2a2a2a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* Header Title */
-#textEditor {
-font-size: 32px;
-font-weight: 600;
-margin-bottom: 12px;
-color: #ffffff;
-}
-
-/* Toolbar */
-#heading {
-display: flex;
-justify-content: center;
-align-items: center;
+#headerContainer h1 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffffff;
 }
 
 #customs {
-display: flex;
-gap: 10px;
-flex-wrap: wrap;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Toolbar Buttons */
+/* ================= TOOLBAR BUTTONS & SELECTS ================= */
 #customs button,
 #customs select {
-padding: 8px 12px;
-
-border: 1px solid #3a3a3a;
-border-radius: 6px;
-
-background: #2a2a2a;
-color: #ddd;
-
-cursor: pointer;
-font-size: 14px;
-
-transition: all 0.2s ease;
+  padding: 8px 12px;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  background: #2a2a2a;
+  color: #ddd;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
+/* Hover */
 #customs button:hover,
 #customs select:hover {
-background: #3a3a3a;
+  background: #3a3a3a;
+  border-color: #4a90e2;
+  color: #ffffff;
 }
 
-#customs button:active {
-background: #4a4a4a;
+/* Pressed / Active — lights up blue */
+#customs button:active,
+#customs select:active {
+  background: #4a90e2;
+  color: #ffffff;
+  border-color: #4a90e2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.6);
+  transform: scale(0.96);
+}
+
+/* Toggled ON state — add this class via JS */
+#customs button.active {
+  background: #4a90e2;
+  color: #ffffff;
+  border-color: #4a90e2;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
 }
 
 /* ================= CONTENT ================= */
 #contentContainer {
-grid-column: 2;
-grid-row: 2;
-
-background: #121212;
-padding: 40px;
-
-overflow-y: auto;
-
-display: flex;
-justify-content: center;
+  grid-column: 2;
+  grid-row: 2;
+  background: #121212;
+  padding: 40px;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
 }
 
-/* Editor Area */
 .editorArea {
-width: 100%;
-max-width: 800px;
-
-min-height: 500px;
-padding: 20px;
-
-border-radius: 10px;
-border: 1px solid #2a2a2a;
-
-background: #000000;
-color: #ffffff;
-
-font-size: 16px;
-line-height: 1.6;
-
-outline: none;
-transition: border 0.2s ease;
+  width: 100%;
+  max-width: 800px;
+  min-height: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+  background: #000000;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.6;
+  outline: none;
+  transition: border 0.2s ease;
+  position: relative;
 }
 
-/* Focus Glow */
 .editorArea:focus {
-border: 1px solid #4a90e2;
+  border: 1px solid #4a90e2;
 }
 
-/* Placeholder */
-.editorArea:empty::before {
-content: "Start writing your content...";
-color: #777;
-}
-
-/* ================= FIX FOR EDITOR CONTENT ================= */
-
-/* Bold */
-.editorArea b {
-font-weight: bold;
-}
-
-/* Italic */
-.editorArea i {
-font-style: italic;
-}
-
-/* Unordered List */
-.editorArea ul {
-padding-left: 20px;
-list-style-type: disc;
-}
-
-/* Ordered List */
-.editorArea ol {
-padding-left: 20px;
-list-style-type: decimal;
-}
-
-/* List Items */
-.editorArea li {
-margin: 5px 0;
-}
-
-/* ================= SCROLLBAR ================= */
-::-webkit-scrollbar {
-width: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-background: #2a2a2a;
-border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-background: #555;
-}
-/* Placeholder for contentEditable */
-.editorArea:empty::before {
-  content: attr(data-placeholder);
-  color: #777;
-  pointer-events: none;
-}
-
-/* Fix list styling inside editor */
-#editor ul, #editor ol {
-  padding-left: 28px;
-  margin: 6px 0;
-}
-
-#editor li {
-  margin: 4px 0;
-}
 .editorArea[data-placeholder]:empty::before {
   content: attr(data-placeholder);
   color: #777;
@@ -235,22 +161,27 @@ background: #555;
   position: absolute;
 }
 
-.editorArea {
-  position: relative; /* needed for placeholder positioning */
-}
-/* Placeholder for contentEditable */
-.editorArea:empty::before {
-  content: attr(data-placeholder);
-  color: #777;
-  pointer-events: none;
-}
-
 /* Fix list styling inside editor */
-#editor ul, #editor ol {
+#editor ul,
+#editor ol {
   padding-left: 28px;
   margin: 6px 0;
 }
 
 #editor li {
   margin: 4px 0;
+}
+
+/* ================= SCROLLBAR ================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

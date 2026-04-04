@@ -2,20 +2,21 @@ export default function Header({ setSize, execCmd, saveSelection }) {
   const cmd = (command, value = null) => (e) => {
     e.preventDefault();
     execCmd(command, value);
+
+    // Toggle .active class for formatting buttons
+    const btn = e.currentTarget;
+    btn.classList.toggle("active");
   };
 
   return (
     <div id="headerContainer">
       <h1>Text Editor</h1>
       <div id="customs">
-        <button onMouseDown={(e) => { e.preventDefault(); saveSelection(); }} onClick={cmd("bold")}>B</button>
-        <button onMouseDown={(e) => { e.preventDefault(); saveSelection(); }} onClick={cmd("italic")}>I</button>
-        <button onMouseDown={(e) => { e.preventDefault(); saveSelection(); }} style={{ textDecoration: "underline" }} onClick={cmd("underline")}>U</button>
+        <button onMouseDown={(e) => { e.preventDefault(); saveSelection(); }} onClick={cmd("bold")}><b>B</b></button>
+        <button onMouseDown={(e) => { e.preventDefault(); saveSelection(); }} onClick={cmd("italic")}><i>I</i></button>
+        <button onMouseDown={(e) => { e.preventDefault(); saveSelection(); }} onClick={cmd("underline")} style={{ textDecoration: "underline" }}>U</button>
 
-        <select onChange={(e) => {
-          const val = e.target.value;
-          execCmd("formatBlock", val);
-        }}>
+        <select onChange={(e) => execCmd("formatBlock", e.target.value)}>
           <option value="p">Normal</option>
           <option value="h1">H1</option>
           <option value="h2">H2</option>
