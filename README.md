@@ -82,12 +82,12 @@ npm install
 ### 2. Run the project (Parcel)
 
 ```bash
-npm start
+npx parcel index.html
 ```
 
 ### 3. Open in browser
 
-http://localhost:1234
+https://stunning-tiramisu-d5bc0b.netlify.app/
 
 ---
 
@@ -101,6 +101,9 @@ http://localhost:1234
    * I → Italic
    * Alignment buttons
    * Lists (bullet / numbered)
+   * Underline
+   * Font-Weight
+   * Font-Size
 4. Only selected text will change
 
 ---
